@@ -276,7 +276,7 @@ public class Physics {
 
 		    if (e != null) {
 		        // Update the entities/sprites position and angle
-		        e.setPosition(b.getPosition());
+		        e.setPosition(b.getTransform().getPosition());
 		    }
 		}
 	}
