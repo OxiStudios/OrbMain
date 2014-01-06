@@ -1,6 +1,7 @@
 package com.noahbutler.orb.World;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -23,7 +24,7 @@ import com.noahbutler.orb.World.Ship.Bullet;
 import com.noahbutler.orb.World.Ship.MainShip;
 
 public class Physics {
-	
+	private static final float SCALING_FACTOR = .05f;
 	private static final float BOX_STEP = 1/60f;
 	private static final int  BOX_VELOCITY_ITERATIONS = 6;
 	private static final int BOX_POSITION_ITERATIONS = 2;
@@ -32,7 +33,6 @@ public class Physics {
 	public World world;
 	private Box2DDebugRenderer debug;
 	private OrthographicCamera camera;
-	private static final float SCALING_FACTOR = .05f;
 	
 	public Array<Body> bulletBodies;
 	public Array<Body> orbBodies;
@@ -42,6 +42,8 @@ public class Physics {
 	private com.noahbutler.orb.World.World gameWorld;
 	
 	private Body shipBody;
+	
+	Iterator<Body> bi;
 	
 	public Physics(OrthographicCamera camera, com.noahbutler.orb.World.World gameWorld) {
 		this.gameWorld = gameWorld;
@@ -265,7 +267,18 @@ public class Physics {
 	private void updateObjects() {
 		//bodies are the parents
 		//update the objects with the bodies vector2
-		
+		bi = world.getBodies();
+		while (bi.hasNext()){
+		    Body b = bi.next();
+
+		    // Get the bodies user data
+		    Entity e = (Entity) b.getUserData();
+
+		    if (e != null) {
+		        // Update the entities/sprites position and angle
+		        e.setPosition(b.getPosition());
+		    }
+		}
 	}
 	
 	public void resize(int width, int height) {

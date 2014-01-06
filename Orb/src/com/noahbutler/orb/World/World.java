@@ -72,8 +72,7 @@ public class World {
 		endlessOrbCreator.create();
 		physics.step(delta);
 		mainBatch.begin();
-//		orbRenderer.render(mainBatch, orbs);
-//		orbCreator.render(mainBatch);
+		orbRenderer.render(mainBatch, orbs);
 		mainBatch.end();
 		camera.update();
 	}

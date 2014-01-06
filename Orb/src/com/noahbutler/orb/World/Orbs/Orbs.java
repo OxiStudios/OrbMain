@@ -26,7 +26,6 @@ public class Orbs extends Entity{
 	}
 	
 	public void render(SpriteBatch b) {
-		
 		sprite.setBounds(x, y, 64, 64);
 		sprite.draw(b);
 	}
@@ -36,9 +35,9 @@ public class Orbs extends Entity{
 		return this.type;
 	}
 	
-	public void updatePosition(Vector2 position) {
-		this.x = position.x;
-		this.y = position.y;
+	public void setPosition(Vector2 position) {
+		this.x = -position.x / .05f;
+		this.y = -position.y / .05f;
 	}
 	
 	public void startContact(String isBullet) {
