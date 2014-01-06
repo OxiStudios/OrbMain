@@ -6,48 +6,39 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.noahbutler.orb.World.Entity;
 
-public class MainShip {
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * A lot needs to get worked on here
+ *
+ */
+public class MainShip extends Entity{
 	int shipIndex;
-	TextureAtlas shipTexture;
-	Sprite image;
-	int x;
-	int y;
+	float x;
+	float y;
 	
 	int dx;
 	
 	Gun gun;
 	
 	public MainShip() {
-		shipTexture = new TextureAtlas();
-		image = shipTexture.createSprite("ship" + shipIndex);
-		gun = new Gun();
-		y = Gdx.graphics.getHeight() - (Gdx.graphics.getHeight()/4);
-		x = Gdx.graphics.getWidth()/2 - 64;
-		image.setPosition(x, y);
+		
 	}
 	
 	public void render(SpriteBatch b) {
-		this.x += dx;
-		image.draw(b);
-		gun.x = this.y;
-		gun.y = this.x;
-		gun.render(b);
+		
 	}
 	
-	public void update() {
-
+	public void setPosition(Vector2 vector) {
+		this.x = vector.x;
+		this.y = vector.y;
 	}
 	
-	public void moveLeft(int i) {
-		dx = i;
-	}
-	
-	public void moveRight(int i) {
-		dx = i;
-	}
-
 	public Array<Bullet> getBulletObjectList() {
 		// TODO Auto-generated method stub
 		return gun.getBulletObjectList();

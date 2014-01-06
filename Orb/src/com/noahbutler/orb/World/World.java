@@ -49,13 +49,11 @@ public class World {
 	 * 
 	 */
 	public World(boolean endless) {
+		Gdx.input.setInputProcessor(new Input(this));
+		
 		camera     = new OrthographicCamera();
 		mainBatch  = new SpriteBatch();
 		physics    = new Physics(this.camera, this);
-		
-		Gdx.input.setInputProcessor(new Input(this));
-		
-//		ship = new MainShip();
 		
 		orbRenderer = new OrbRenderer();
 		orbs        = new Array<Orbs>();
@@ -65,6 +63,9 @@ public class World {
 		}else{
 //			orbCreator = new OrbCreator(15, this); //not currently working. Because of the use of Random
 		}
+		
+		createBounds();
+		createNewPlayer();
 	}
 	
 	public void render(float delta) {
@@ -116,6 +117,18 @@ public class World {
 	
 	public void addOrbForRendering(Orbs orb) {
 		orbs.add(orb);
+	}
+	
+	private void createNewPlayer() {
+		ship = new MainShip();
+		physics.addShip(ship);
+	}
+	
+	private void createBounds() {
+        physics.addBounds(new Vector2(0, -35), 20, 1, new Bounds());
+        physics.addBounds(new Vector2(0, 35), 20, 1, new Bounds());
+        physics.addBounds(new Vector2(-20 , 0), 1, 35, new Bounds());
+        physics.addBounds(new Vector2(20, 0), 1, 35, new Bounds());
 	}
 
 }

@@ -30,31 +30,27 @@ public class Gun {
 	public int numBullets = 0;
 	
 	public Gun() {
-		bulletIndex = 1;
-		barrelIndex = 1;
-		baseIndex   = 1;
-		
-		bullets = new Array<Bullet>();
-		
-		bulletTexture = new TextureAtlas();
-		bullet        = new Sprite(bulletTexture.createSprite("bullet" + bulletIndex));
-		bullet.setSize(16, 16);
-		
-		barrel = new Sprite(barrelTexture.createSprite("barrel" + barrelIndex));
-		barrel.setSize(16, 32);
-		barrel.setPosition(this.x + barrel.getWidth()/2, this.y + 10);
-		
-		base = new Sprite(baseTexture.createSprite("base" + baseIndex));
-		base.setSize(32,32);
-		base.setPosition(this.x, this.y);
+//		bulletIndex = 1;
+//		barrelIndex = 1;
+//		baseIndex   = 1;
+//		
+//		bullets = new Array<Bullet>();
+//		
+//		bulletTexture = new TextureAtlas();
+//		bullet        = new Sprite(bulletTexture.createSprite("bullet" + bulletIndex));
+//		bullet.setSize(16, 16);
+//		
+//		barrel = new Sprite(barrelTexture.createSprite("barrel" + barrelIndex));
+//		barrel.setSize(16, 32);
+//		barrel.setPosition(this.x + barrel.getWidth()/2, this.y + 10);
+//		
+//		base = new Sprite(baseTexture.createSprite("base" + baseIndex));
+//		base.setSize(32,32);
+//		base.setPosition(this.x, this.y);
 	}
 	
 	public void render(SpriteBatch b) {
-//		if(bullets != null) {
-//			for(int i = 0; i< bullets.size(); i++) {
-//				bullets.get(i).render(b, bullet);
-//			}
-//		}
+		
 	}
 
 	public Array<Bullet> getBulletObjectList() {

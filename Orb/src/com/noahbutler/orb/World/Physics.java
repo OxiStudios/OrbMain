@@ -20,6 +20,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.World.Orbs.Orbs;
 import com.noahbutler.orb.World.Ship.Bullet;
+import com.noahbutler.orb.World.Ship.MainShip;
 
 public class Physics {
 	
@@ -60,11 +61,6 @@ public class Physics {
         deletableBodies = new Array<Body>();
         
         createCollisionListener();
-        addBounds(new Vector2(0, -35), 20, 1);
-        addBounds(new Vector2(0, 35), 20, 1);
-        addBounds(new Vector2(-20 , 0), 1, 35);
-        addBounds(new Vector2(20, 0), 1, 35);
-        addShip();
     }
 	
 	public void step(float delta) {
@@ -122,7 +118,7 @@ public class Physics {
 		
 		//make the shape of the body of fixture could be made in constructor, same for every bullet
 		PolygonShape bulletShape = new PolygonShape();
-		bulletShape.setAsBox(.5f, 1f);
+		bulletShape.setAsBox(.5f, .75f);
 		
 		//make a body to add to the world
 		BodyDef bulletBodyDef = new BodyDef();
@@ -152,7 +148,7 @@ public class Physics {
 		bulletShape.dispose();
 	}
 	
-	public void addShip() {
+	public void addShip(MainShip ship) {
 		//starting position
 		Vector2 position = new Vector2(0, -25);
 		
@@ -175,10 +171,12 @@ public class Physics {
 		//add fixture to the world body
 		shipBody.createFixture(shipFixture);
 		shipShape.dispose();
+		
+		shipBody.setUserData(ship);
 				
 	}
 	
-	private void addBounds(Vector2 position, float xSize, float ySize) {
+	public void addBounds(Vector2 position, float xSize, float ySize, Bounds newBounds) {
 		PolygonShape groundShape = new PolygonShape();
         groundShape.setAsBox(xSize, ySize);
         BodyDef groundBodyDef = new BodyDef();
@@ -189,6 +187,9 @@ public class Physics {
         fixtureDef.shape = groundShape;
         groundBody.createFixture(fixtureDef);
         bounds.add(groundBody);
+        
+        groundBody.setUserData(newBounds);
+        
         groundShape.dispose();
 	}
 	
