@@ -1,5 +1,6 @@
 package com.noahbutler.orb.World;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -26,8 +27,14 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Entity {
 	
+	static final float SCALING_FACTOR = .05f;
+	Vector2 position;
+	
+	float offsetX = (Gdx.graphics.getWidth() / 2) * SCALING_FACTOR;
+	float offsetY = (Gdx.graphics.getHeight() / 2) * SCALING_FACTOR;
+	
 	public Entity() {
-		
+		position = new Vector2();
 	}
 	
 	public void startContact(String isBullet) {
@@ -42,9 +49,14 @@ public class Entity {
 	public String getIsBullet() {
 		return "notBullet";
 	}
-	
+	//sets the bottom left corner of the sprite to the middle of the body
 	public void setPosition(Vector2 vector) {
-		
+		position.x = (vector.x + offsetX) / SCALING_FACTOR;
+		position.y = (vector.y + offsetY) / SCALING_FACTOR;
+	}
+	
+	public Vector2 getPosition() {
+		return position;
 	}
 	
 }

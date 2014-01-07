@@ -26,18 +26,14 @@ public class Orbs extends Entity{
 	}
 	
 	public void render(SpriteBatch b) {
-		sprite.setPosition(x, y);
+		sprite.setPosition(getPosition().x- sprite.getWidth()/2, getPosition().y - sprite.getHeight()/2);
+		Gdx.app.log("Coords", "x: " + sprite.getX() + ", y: " + sprite.getY());
 		sprite.draw(b);
 	}
 
 	public int getType() {
 		// TODO Auto-generated method stub
 		return this.type;
-	}
-	
-	public void setPosition(Vector2 position) {
-		this.x = position.x / .05f;
-		this.y = position.y / .05f;
 	}
 	
 	public void startContact(String isBullet) {
