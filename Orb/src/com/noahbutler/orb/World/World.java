@@ -36,12 +36,12 @@ public class World {
 	OrthographicCamera camera;
 	Physics physics;
 	
-	
 	MainShip ship;
 	private OrbCreator orbCreator;
 	private EndlessOrbCreator endlessOrbCreator;
 	private OrbRenderer orbRenderer;
 	public Array<Orbs> orbs;
+	private Backgrounds background;
 	
 	/**
 	 * 
@@ -55,6 +55,7 @@ public class World {
 		mainBatch  = new SpriteBatch();
 		physics    = new Physics(this.camera, this);
 		
+		background  = new Backgrounds();
 		orbRenderer = new OrbRenderer();
 		orbs        = new Array<Orbs>();
 		
@@ -71,9 +72,11 @@ public class World {
 	public void render(float delta) {
 		endlessOrbCreator.create();
 		physics.step(delta);
+		
 		mainBatch.begin();
 		orbRenderer.render(mainBatch, orbs);
 		mainBatch.end();
+		
 		camera.update();
 	}
 	

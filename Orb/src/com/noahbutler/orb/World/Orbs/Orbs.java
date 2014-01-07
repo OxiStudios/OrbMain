@@ -21,13 +21,13 @@ public class Orbs extends Entity{
 	private Sprite sprite;
 	public Orbs(int type) {
 		this.type = type;
-		texture = new Texture(Gdx.files.internal("data/orbs/white.png"));
+		texture = new Texture(Gdx.files.internal("data/orbs/orbtest64.png"));
 		sprite = new Sprite(texture);
 	}
 	
 	public void render(SpriteBatch b) {
+		//gets the position of the body and sets the sprite in the middle of it
 		sprite.setPosition(getPosition().x- sprite.getWidth()/2, getPosition().y - sprite.getHeight()/2);
-		Gdx.app.log("Coords", "x: " + sprite.getX() + ", y: " + sprite.getY());
 		sprite.draw(b);
 	}
 
