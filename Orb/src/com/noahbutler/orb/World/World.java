@@ -25,6 +25,12 @@ import com.noahbutler.orb.World.Ship.MainShip;
  * 
  * Main class that brings all the
  * elements of the game together
+ * 
+ * Nice to have this so we dont have to
+ * write it all in the game screen class.
+ * This just get created in the game class
+ * calls this render method inside of its 
+ * render method.
  *
  */
 

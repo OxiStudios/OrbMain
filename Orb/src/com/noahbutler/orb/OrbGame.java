@@ -1,7 +1,5 @@
 package com.noahbutler.orb;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.Screens.AchievementScreen;
@@ -16,6 +14,20 @@ import com.noahbutler.orb.Screens.LevelSelection.LevelDesertSelection;
 import com.noahbutler.orb.Screens.LevelSelection.LevelPlanetSelection;
 import com.noahbutler.orb.Screens.LevelSelection.LevelSelectScreen;
 import com.noahbutler.orb.Screens.LevelSelection.LevelSpaceSelection;
+
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * This is the main Game class that runs everything
+ * To break the different parts of the game up like
+ * the menus and game we use screens, the screen of the
+ * game can be switched whenever we please by calling
+ * OrbGame.setScreen()
+ * 
+ * In android this class in most related to the Activity Class
+ *
+ */
 
 public class OrbGame extends Game {
 	

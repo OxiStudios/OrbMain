@@ -1,5 +1,17 @@
 package com.noahbutler.orb.Screens;
 
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * This screen will display each a achievement
+ * 
+ * A gray and black image for the the achievements
+ * the player has not unlocked yet and a colored one
+ * for the achievements that the player has unlocked
+ *
+ */
+
 public class AchievementScreen extends MasterScreen{
 
 	@Override

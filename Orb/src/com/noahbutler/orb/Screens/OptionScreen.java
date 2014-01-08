@@ -2,6 +2,16 @@ package com.noahbutler.orb.Screens;
 
 import com.badlogic.gdx.Screen;
 
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * Not sure if this will be in the game
+ * but it will be used to reset player data, 
+ * change the music volume and maybe a few more
+ * things that I cannot think of at the moment.
+ *
+ */
 
 public class OptionScreen extends MasterScreen{
 

@@ -5,7 +5,10 @@ import com.badlogic.gdx.Screen;
 /*
  * @author: Noah Butler
  * 
- * is extended by all other screens so we can keep them in arrays
+ * This class is very useful. It lets me have 
+ * a object that all the other screens can cast
+ * to. So I might need to change the name from master
+ * Screen to ScreenClass to avoid confusion.
  */
 
 public class MasterScreen implements Screen{

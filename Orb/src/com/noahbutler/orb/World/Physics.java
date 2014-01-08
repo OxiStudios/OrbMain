@@ -23,6 +23,38 @@ import com.noahbutler.orb.World.Orbs.Orbs;
 import com.noahbutler.orb.World.Ship.Bullet;
 import com.noahbutler.orb.World.Ship.MainShip;
 
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * This is probably the most complex
+ * class of the game at this point. 
+ * 
+ * It is used for one thing in this game
+ * and that is the best 2d collision detection
+ * ever. Seriously box2d has amazing physics
+ * and collision detection.
+ * 
+ * So there are methods to make four different bodies
+ * to add to the physics world
+ * 
+ * Orbs
+ * Ship
+ * bounds
+ * bullets
+ * 
+ * These are created at the correct time and a sprite
+ * is matched with the correct physics body. This class
+ * is responsible for all the movement in the game.
+ * 
+ * Because box2d is in meters and the x and y axis start
+ * in the middle of the screen there are some funky conversions
+ * going on throughout the game. But they aren't to troublesome.
+ * 
+ * Bodies also need to get removed when a bullet or orb is destroyed
+ * and you must write code that plays nicely with the world stepper
+ */
+
 public class Physics {
 	private static final float SCALING_FACTOR = .05f;
 	private static final float BOX_STEP = 1/60f;

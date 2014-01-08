@@ -2,6 +2,21 @@ package com.noahbutler.orb.Screens;
 
 import com.badlogic.gdx.Screen;
 
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * This screen will set the different indexes for the gun,
+ * it will only access the save file so that if the player
+ * quits the game and starts it back up again his selection
+ * will not revert.
+ * 
+ * This class will also pull from the save class what guns
+ * the player has unlocked so that the players level determines
+ * what guns the player has unlocked.
+ *
+ */
+
 public class GunUpgradeScreen implements Screen{
 
 	@Override

@@ -7,21 +7,32 @@ import com.badlogic.gdx.math.Vector2;
  * 
  * @author Noah Butler
  * 
- * Start contact takes a String
+ * This class as a whole is used by the physics
+ * world so that when a contact is made by two
+ * generic bodies the userdata of the bodies can 
+ * be casted to an entity. The classes orb, ship,
+ * bullet and bounds all extend entity and override
+ * current methods so that certain things will happen
+ * during a collision.
+ * 
+ * The reason the bodies are generic is because that is
+ * how box2d's collision detection works.
+ * 
+ * method startContact() takes a String
  * if the string can be parse to an int
  * that object got hit by a bullet
  * 
- * get check deletable returns a string
+ * getCheckDeletable() returns a string
  * if it is yes the body that is assoc. with
  * that object will get deleted
  * 
- * getBullet is used to pass to start Contact
+ * getBullet() is used to pass to start Contact
  * a bullet returns a "1" everything else returns
  * "not a bullet" this is so if the ship or an orb
  * hits something that is not a bullet the player
  * doesn't get points but the orb blows up
  * 
- * setPosition is used to update the sprite of the 
+ * setPosition() is used to update the sprite of the 
  * current entity with the position of is assoc. body
  */
 

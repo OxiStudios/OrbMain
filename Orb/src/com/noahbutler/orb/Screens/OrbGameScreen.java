@@ -4,6 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.noahbutler.orb.World.World;
 
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * This is the main game screen that runs the game
+ * it will take some parameters like what level to 
+ * load/ boss to load, save file for getting the
+ * correct sprite indexes and player level and what not.
+ *
+ */
+
 public class OrbGameScreen extends MasterScreen{
 	
 	World world;

@@ -10,13 +10,16 @@ import com.noahbutler.orb.World.World;
  * 
  * @author Noah Butler
  * 
- *         This class is used in the end mode of the game. It is in charge of
+ *         This class is used in the endless mode of the game. It is in charge of
  *         creating the right orbs at the right time.
  * 
  *         For rendering, when an orb is created it is added to the orbs Array
  *         in the world object and is then passed to the Orb Renderer where it
- *         gets assigned a sprite and then the render method of the renderer
- *         gets called in the world object render method
+ *         gets assigned a sprite and then the render method of the rendering class
+ *         gets called in the world object render method. 
+ *         
+ *         A lil hard to explain in English but if you look at the classes it should
+ *         be easy enough to follow.
  * 
  */
 

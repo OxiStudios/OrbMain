@@ -16,6 +16,17 @@ import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.Screens.ButtonListeners.MainMenuButtonListener;
 
+/**
+ * 
+ * @author Noah Butler
+ * 
+ * The main menu is what it sounds like,
+ * it will have buttons that will go to all
+ * the different screens. and will act as the 
+ * game's hub.
+ *
+ */
+
 public class MainMenuScreen extends MasterScreen{
 	
 	private OrbGame game;
