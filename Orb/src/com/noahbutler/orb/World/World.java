@@ -140,6 +140,7 @@ public class World {
 		physics.addShip(ship);
 	}
 	
+	//needs to be switched to ratios so it fits on all screens.
 	private void createBounds() {
         physics.addBounds(new Vector2(0, -35), 20, 1, new Bounds());
         physics.addBounds(new Vector2(0, 35), 20, 1, new Bounds());
