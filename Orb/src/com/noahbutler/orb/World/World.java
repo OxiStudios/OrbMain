@@ -1,16 +1,14 @@
 package com.noahbutler.orb.World;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Input.Input;
 import com.noahbutler.orb.World.Orbs.EndlessOrbCreator;
 import com.noahbutler.orb.World.Orbs.OrbCreator;
@@ -48,6 +46,7 @@ public class World {
 	private OrbRenderer orbRenderer;
 	public Array<Orbs> orbs;
 	private Backgrounds background;
+	BitmapFont words;
 	
 	/**
 	 * 
@@ -64,6 +63,8 @@ public class World {
 		background  = new Backgrounds();
 		orbRenderer = new OrbRenderer();
 		orbs        = new Array<Orbs>();
+		words       = new BitmapFont();
+		words.setColor(new Color(100,100,100,1));
 		
 		if(endless) {
 			endlessOrbCreator = new EndlessOrbCreator(this);
@@ -81,6 +82,7 @@ public class World {
 		
 		mainBatch.begin();
 		orbRenderer.render(mainBatch, orbs);
+		words.draw(mainBatch, "Score: " + OrbGame.saveFile.score, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
 		mainBatch.end();
 		
 		camera.update();
@@ -125,6 +127,12 @@ public class World {
 	
 	public void addOrbForRendering(Orbs orb) {
 		orbs.add(orb);
+	}
+	
+	public void deleteOrbObj(Orbs orb) {
+		orbs.removeValue(orb, true);
+		orb.sprite = null;
+		orb = null;
 	}
 	
 	private void createNewPlayer() {

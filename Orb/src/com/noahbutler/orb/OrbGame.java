@@ -50,8 +50,12 @@ public class OrbGame extends Game {
 	
 	private MainAssetLoader assetLoader;
 	
+	public static SaveFile saveFile;
+	
 	@Override
 	public void create() {
+		saveFile = new SaveFile();
+		
 		screens      = new Array<MasterScreen>();
 		levelScreens = new Array<MasterScreen>();
 		

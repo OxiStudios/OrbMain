@@ -131,6 +131,7 @@ public class Physics {
 		//add fixture to orbFixture and shape to it
 		FixtureDef orbFixture = new FixtureDef();
 		orbFixture.shape = orbShape;
+		orbFixture.isSensor = true;
 		
 		//add fixture to the world body
 		orbBody.createFixture(orbFixture);

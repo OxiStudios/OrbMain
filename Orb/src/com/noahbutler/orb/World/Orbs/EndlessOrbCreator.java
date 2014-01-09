@@ -96,7 +96,7 @@ public class EndlessOrbCreator {
 
 	private void addOrb() {
 		// random x coord, and static y coord
-		Orbs orb = new Orbs(1);
+		Orbs orb = new Orbs(1, this.world);
 		world.addOrbToPhysicsWorld(new Vector2(MathUtils.random(38) - 19, 30), orb);
 		world.addOrbForRendering(orb);
 	}

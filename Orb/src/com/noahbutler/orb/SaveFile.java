@@ -21,12 +21,16 @@ import java.util.ArrayList;
 
 public class SaveFile {
 
-	public int bulletSelectedIndex = 0;
-	
-	public int shipSelectedIndex = 0;
-	public int gunTipSelectedIndex = 0;
+	public int firstBulletSelectedIndex  = 0;
+	public int secondBulletSelectedIndex = 0;
+	public int shipSelectedIndex      = 0;
+	public int gunTipSelectedIndex    = 0;
 	public int gunBarrelSelectedIndex = 0;
-	public int gunBaseSelectedIndex = 0;
+	public int gunBaseSelectedIndex   = 0;
+	
+	public int score = 0;
+	public int money = 0;
+	public int level = 0;
 	
 	public SaveFile() {
 		//try loading a saved file
