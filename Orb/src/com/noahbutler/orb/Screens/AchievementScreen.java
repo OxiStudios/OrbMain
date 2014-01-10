@@ -17,7 +17,7 @@ import com.noahbutler.orb.OrbGame;
  */
 
 public class AchievementScreen extends MasterScreen {
-	
+
 	public AchievementScreen() {
 		Gdx.app.log(log, "Loading Achievements...");
 	}
@@ -25,106 +25,94 @@ public class AchievementScreen extends MasterScreen {
 	public boolean kill_CEO_goal() {
 		if (OrbGame.saveFile.kills_made >= 100) {
 			OrbGame.saveFile.kill_CEO = true;
-		}else{
+		} else {
 			OrbGame.saveFile.kill_CEO = false;
 		}
 		return OrbGame.saveFile.kill_CEO;
 	}
 
-	@SuppressWarnings("null")
 	public boolean kill_Killionare_goal() {
-		if ((int) kills_made >= 500) {
-			return kill_CEO;
+		if (OrbGame.saveFile.kills_made >= 500) {
+			return OrbGame.saveFile.kill_Killionare;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.kill_Killionare;
 	}
 
-	@SuppressWarnings("null")
 	public boolean kill_OohKillEm_goal() {
-		if ((int) kills_made == 1000) {
-			return kill_CEO;
+		if (OrbGame.saveFile.kills_made >= 1000) {
+			return OrbGame.saveFile.kill_OohKillEm;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.kill_OohKillEm;
 	}
 
-	@SuppressWarnings("null")
 	public boolean level_TheNewGuy_goal() {
-		if ((int) level_reached == 5) {
-			return level_TheNewGuy;
+		if (OrbGame.saveFile.level_reached == 5) {
+			return OrbGame.saveFile.level_TheNewGuy;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.level_TheNewGuy;
 	}
 
-	@SuppressWarnings("null")
 	public boolean level_SoISeeYouLikeToKillThings_goal() {
-		if ((int) level_reached == 10) {
-			return level_SoISeeYouLikeToKillThings;
+		if (OrbGame.saveFile.level_reached == 10) {
+			return OrbGame.saveFile.level_SoISeeYouLikeToKillThings;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.level_SoISeeYouLikeToKillThings;
 	}
 
-	@SuppressWarnings("null")
 	public boolean boss_DefeatBoss1_goal() {
-		if ((int) boss_reached == 1) {
-			return boss_DefeatBoss1;
+		if (OrbGame.saveFile.boss_reached == 1) {
+			return OrbGame.saveFile.boss_DefeatBoss1;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.boss_DefeatBoss1;
 	}
 
-	@SuppressWarnings("null")
 	public boolean boss_DefeatBoss2_goal() {
-		if ((int) boss_reached == 2) {
-			return boss_DefeatBoss1;
+		if (OrbGame.saveFile.boss_reached == 2) {
+			return OrbGame.saveFile.boss_DefeatBoss2;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.boss_DefeatBoss2;
 	}
 
-	@SuppressWarnings("null")
 	public boolean boss_DefeatBoss3_goal() {
-		if ((int) boss_reached == 3) {
-			return boss_DefeatBoss1;
+		if (OrbGame.saveFile.boss_reached == 3) {
+			return OrbGame.saveFile.boss_DefeatBoss3;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.boss_DefeatBoss3;
 	}
 
-	@SuppressWarnings("null")
 	public boolean boss_DefeatBoss4_goal() {
-		if ((int) boss_reached == 4) {
-			return boss_DefeatBoss1;
+		if (OrbGame.saveFile.boss_reached == 4) {
+			return OrbGame.saveFile.boss_DefeatBoss4;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.boss_DefeatBoss4;
 	}
 
-	@SuppressWarnings("null")
 	public boolean play_YouPlayedHowLong_goal() {
-		if ((int) play_time == 10) {
-			return play_YouPlayedHowLong;
+		if (OrbGame.saveFile.play_time == 10) {
+			return OrbGame.saveFile.play_YouPlayedHowLong;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.play_YouPlayedHowLong;
 	}
 
-	@SuppressWarnings("null")
 	public boolean play_NotRPG_goal() {
-		if ((int) play_time == 25) {
-			return play_NotRPG;
+		if (OrbGame.saveFile.play_time == 25) {
+			return OrbGame.saveFile.play_NotRPG;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.play_NotRPG;
 	}
 
-	@SuppressWarnings("null")
 	public boolean area_IntoTheVoid_goal() {
-		if ((int) area_unlocked == 1) {
-			return area_IntoTheVoid;
+		if (OrbGame.saveFile.area_unlocked == 1) {
+			return OrbGame.saveFile.area_IntoTheVoid;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.area_IntoTheVoid;
 	}
 
-	@SuppressWarnings("null")
 	public boolean area_TheyCameFromWithin_goal() {
-		if ((int) area_unlocked == 2) {
-			return area_TheyCameFromWithin;
+		if (OrbGame.saveFile.area_unlocked == 2) {
+			return OrbGame.saveFile.area_TheyCameFromWithin;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.area_TheyCameFromWithin;
 	}
 
 	// maybe instead of having a int for the area_unlockded, perhaps a char
