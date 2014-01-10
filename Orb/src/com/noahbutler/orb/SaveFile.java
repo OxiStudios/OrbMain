@@ -32,8 +32,32 @@ public class SaveFile {
 	public int money = 0;
 	public int level = 0;
 	
+	public boolean kill_CEO;
+	public boolean kill_Killionare;
+	public boolean kill_OohKillEm;
+	public boolean level_TheNewGuy;
+	public boolean level_SoISeeYouLikeToKillThings;
+	public boolean boss_DefeatBoss1;
+	public boolean boss_DefeatBoss2;
+	public boolean boss_DefeatBoss3;
+	public boolean boss_DefeatBoss4;
+	public boolean play_YouPlayedHowLong;
+	public boolean play_NotRPG;
+	public boolean area_IntoTheVoid;
+	public boolean area_TheyCameFromWithin;
+
+	public int kills_made;
+	public int level_reached;
+	public int boss_reached;
+	public int play_time;
+	public int area_unlocked;
+	
 	public SaveFile() {
 		//try loading a saved file
+		
+	}
+	
+	public void save() {
 		
 	}
 }

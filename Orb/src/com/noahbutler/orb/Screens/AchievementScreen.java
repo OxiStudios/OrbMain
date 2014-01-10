@@ -17,48 +17,23 @@ import com.noahbutler.orb.OrbGame;
  */
 
 public class AchievementScreen extends MasterScreen {
-	private Array<MasterScreen> screens;
-	private OrbGame game;
-	public boolean kill_CEO;
-	public boolean kill_Killionare;
-	public boolean kill_OohKillEm;
-	public boolean level_TheNewGuy;
-	public boolean level_SoISeeYouLikeToKillThings;
-	public boolean boss_DefeatBoss1;
-	public boolean boss_DefeatBoss2;
-	public boolean boss_DefeatBoss3;
-	public boolean boss_DefeatBoss4;
-	public boolean play_YouPlayedHowLong;
-	public boolean play_NotRPG;
-	public boolean area_IntoTheVoid;
-	public boolean area_TheyCameFromWithin;
-	String log = "AS";
-
-	int kills_made;
-	int level_reached;
-	int boss_reached;
-	int play_time;
-	int area_unlocked;
-
-	public AchievementScreen(OrbGame game, Array<MasterScreen> screens) {
-		this.game = game;
-		this.screens = screens;
-
+	
+	public AchievementScreen() {
 		Gdx.app.log(log, "Loading Achievements...");
 	}
 
-	@SuppressWarnings("null")
 	public boolean kill_CEO_goal() {
-		if ((int) kills_made == 100) {
-			return kill_CEO;
-
+		if (OrbGame.saveFile.kills_made >= 100) {
+			OrbGame.saveFile.kill_CEO = true;
+		}else{
+			OrbGame.saveFile.kill_CEO = false;
 		}
-		return (Boolean) null;
+		return OrbGame.saveFile.kill_CEO;
 	}
 
 	@SuppressWarnings("null")
 	public boolean kill_Killionare_goal() {
-		if ((int) kills_made == 500) {
+		if ((int) kills_made >= 500) {
 			return kill_CEO;
 		}
 		return (Boolean) null;
