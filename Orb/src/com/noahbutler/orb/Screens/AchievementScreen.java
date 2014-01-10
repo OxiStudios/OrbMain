@@ -19,7 +19,7 @@ import com.noahbutler.orb.OrbGame;
 public class AchievementScreen extends MasterScreen {
 
 	public AchievementScreen() {
-		Gdx.app.log(log, "Loading Achievements...");
+		Gdx.app.log("AS", "Loading Achievements...");
 	}
 
 	public boolean kill_CEO_goal() {
@@ -158,7 +158,7 @@ public class AchievementScreen extends MasterScreen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		Gdx.app.log(log, "showns");
+		Gdx.app.log("AS", "showns");
 
 	}
 

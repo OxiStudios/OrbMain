@@ -58,6 +58,7 @@ public class Gun {
 	public void render(SpriteBatch b) {
 		if(currentTime - lastShotTime >= OrbGame.saveFile.fireTime) {
 			world.canfire = true;
+			lastShotTime = currentTime;
 		}else {
 			world.canfire = false;
 		}

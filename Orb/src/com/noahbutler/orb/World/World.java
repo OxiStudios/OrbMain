@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.OrbGame;
+import com.noahbutler.orb.World.Abilities.AbilitiesTable;
 import com.noahbutler.orb.World.Input.Input;
 import com.noahbutler.orb.World.Orbs.EndlessOrbCreator;
 import com.noahbutler.orb.World.Orbs.OrbCreator;
@@ -49,6 +51,10 @@ public class World {
 	BitmapFont words;
 	
 	public boolean canfire;
+
+	private Stage stage;
+
+	private AbilitiesTable abilitiesTable;
 	
 	/**
 	 * 
@@ -65,8 +71,10 @@ public class World {
 		background  = new Backgrounds();
 		orbRenderer = new OrbRenderer();
 		orbs        = new Array<Orbs>();
-		words       = new BitmapFont();
-		words.setColor(new Color(100,100,100,1));
+		
+		words          = new BitmapFont();
+		stage          = new Stage();
+		abilitiesTable = new AbilitiesTable(1, 1);
 		
 		if(endless) {
 			endlessOrbCreator = new EndlessOrbCreator(this);
@@ -76,6 +84,7 @@ public class World {
 		
 		createBounds();
 		createNewPlayer();
+		stage.addActor(abilitiesTable.abilitiesTable);
 	}
 	
 	
@@ -83,8 +92,9 @@ public class World {
 	public void render(float delta) {
 		endlessOrbCreator.create();
 		physics.step(delta);
-		
+		stage.act();
 		mainBatch.begin();
+		abilitiesTable.render(stage);
 		ship.render(mainBatch);
 		orbRenderer.render(mainBatch, orbs);
 		words.draw(mainBatch, "Score: " + OrbGame.saveFile.score, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
