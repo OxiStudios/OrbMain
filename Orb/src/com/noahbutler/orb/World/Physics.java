@@ -153,7 +153,7 @@ public class Physics {
 		
 		//make the shape of the body of fixture could be made in constructor, same for every bullet
 		PolygonShape bulletShape = new PolygonShape();
-		bulletShape.setAsBox(.5f, .75f);
+		bulletShape.setAsBox(.35f, .6f);
 		
 		//make a body to add to the world
 		BodyDef bulletBodyDef = new BodyDef();
@@ -166,6 +166,7 @@ public class Physics {
 		//make a fixture for the body and shape to it
 		FixtureDef bulletFixture = new FixtureDef();
 		bulletFixture.shape = bulletShape;
+		bulletFixture.isSensor = true;
 		
 		//add fixture to the world body 
 		bulletBody.createFixture(bulletFixture);

@@ -32,8 +32,9 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		world.addBulletToPhysicsBullet(world.getShipPosition(), new Bullet(world.getShipPosition()));
-		return false;
+		if(world.canfire)		
+			world.addBulletToPhysicsBullet(world.getShipPosition(), new Bullet(world.getShipPosition()));
+			return false;
 	}
 
 	@Override

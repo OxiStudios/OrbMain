@@ -48,6 +48,8 @@ public class World {
 	private Backgrounds background;
 	BitmapFont words;
 	
+	public boolean canfire;
+	
 	/**
 	 * 
 	 * @param endless
@@ -76,11 +78,14 @@ public class World {
 		createNewPlayer();
 	}
 	
+	
+	
 	public void render(float delta) {
 		endlessOrbCreator.create();
 		physics.step(delta);
 		
 		mainBatch.begin();
+		ship.render(mainBatch);
 		orbRenderer.render(mainBatch, orbs);
 		words.draw(mainBatch, "Score: " + OrbGame.saveFile.score, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
 		mainBatch.end();
@@ -136,7 +141,7 @@ public class World {
 	}
 	
 	private void createNewPlayer() {
-		ship = new MainShip();
+		ship = new MainShip(this);
 		physics.addShip(ship);
 	}
 	

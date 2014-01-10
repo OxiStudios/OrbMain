@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Entity;
+import com.noahbutler.orb.World.World;
 
 /**
  * 
@@ -26,12 +28,12 @@ public class MainShip extends Entity{
 	
 	Gun gun;
 	
-	public MainShip() {
-		
+	public MainShip(World world) {
+		gun = new Gun(world, OrbGame.saveFile.gunBarrelSelectedIndex, OrbGame.saveFile.gunBaseSelectedIndex);
 	}
 	
 	public void render(SpriteBatch b) {
-		
+		gun.render(b);
 	}
 	
 	public void setPosition(Vector2 vector) {

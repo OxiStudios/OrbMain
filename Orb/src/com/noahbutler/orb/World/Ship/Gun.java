@@ -1,11 +1,12 @@
 package com.noahbutler.orb.World.Ship;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.TimeUtils;
+import com.noahbutler.orb.OrbGame;
+import com.noahbutler.orb.World.World;
 
 public class Gun {
 	int bulletIndex;
@@ -28,8 +29,13 @@ public class Gun {
 	
 	public Array<Bullet> bullets;
 	public int numBullets = 0;
-	
-	public Gun() {
+	World world;
+	float currentTime;
+	float lastShotTime;
+	public Gun(World world, int barrelSelectedIndex, int baseSelectedIndex) {
+		this.world = world;
+		currentTime = 0;
+		lastShotTime = TimeUtils.nanoTime();
 //		bulletIndex = 1;
 //		barrelIndex = 1;
 //		baseIndex   = 1;
@@ -50,7 +56,13 @@ public class Gun {
 	}
 	
 	public void render(SpriteBatch b) {
+		if(currentTime - lastShotTime >= OrbGame.saveFile.fireTime) {
+			world.canfire = true;
+		}else {
+			world.canfire = false;
+		}
 		
+		currentTime = TimeUtils.nanoTime();
 	}
 
 	public Array<Bullet> getBulletObjectList() {

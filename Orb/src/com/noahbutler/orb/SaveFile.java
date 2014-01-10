@@ -52,6 +52,12 @@ public class SaveFile {
 	public int play_time;
 	public int area_unlocked;
 	
+	//can fire every .5 seconds
+	//this will be different for each bullet
+	//and their level takes off a percent of 
+	//the time.
+	public float fireTime = 500000000;
+	
 	public SaveFile() {
 		//try loading a saved file
 		
