@@ -1,6 +1,7 @@
 package com.noahbutler.orb.World;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -39,6 +40,8 @@ public class World {
 	
 	private static final float SCALING_FACTOR = .05f;
 	
+	InputMultiplexer multiplexer;
+	
 	SpriteBatch mainBatch;
 	OrthographicCamera camera;
 	Physics physics;
@@ -64,7 +67,8 @@ public class World {
 	 * 
 	 */
 	public World(boolean endless) {
-		Gdx.input.setInputProcessor(new Input(this));
+		
+		multiplexer = new InputMultiplexer();
 		
 		camera     = new OrthographicCamera();
 		mainBatch  = new SpriteBatch();
@@ -74,9 +78,13 @@ public class World {
 		orbRenderer = new OrbRenderer();
 		orbs        = new Array<Orbs>();
 		
-		words          = new BitmapFont();
+		words = new BitmapFont();
+		
 		stage          = new Stage();
-		abilitiesTable = new AbilitiesTable(1, 1);
+		masterTable    = new Table();
+		masterTable.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		statsTable     = new UIOverlay(this);
+		abilitiesTable = new AbilitiesTable(this, 1, 1);
 		
 		if(endless) {
 			endlessOrbCreator = new EndlessOrbCreator(this);
@@ -87,6 +95,12 @@ public class World {
 		createBounds();
 		createNewPlayer();
 		stage.addActor(masterTable);
+
+		multiplexer.addProcessor(stage);
+		multiplexer.addProcessor(new Input(this));
+		
+		Gdx.input.setInputProcessor(multiplexer);
+		
 	}
 	
 	
@@ -94,9 +108,12 @@ public class World {
 	public void render(float delta) {
 		endlessOrbCreator.create();
 		physics.step(delta);
-		stage.act();
+		stage.act(delta);
+		stage.draw();
+		Table.drawDebug(stage);
+		
 		mainBatch.begin();
-		abilitiesTable.render(stage);
+		statsTable.render(delta);
 		ship.render(mainBatch);
 		orbRenderer.render(mainBatch, orbs);
 		words.draw(mainBatch, "Score: " + OrbGame.saveFile.score, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);

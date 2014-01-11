@@ -1,11 +1,10 @@
 package com.noahbutler.orb.World.Abilities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.noahbutler.orb.World.World;
 
 public class AbilitiesTable {
 	
@@ -16,21 +15,27 @@ public class AbilitiesTable {
 	
 	TextButton extendAbilityTable;
 	
-	public AbilitiesTable(int abilityOneSelectedIndex, int abilityTwoSelectedIndex) {
+	public AbilitiesTable(World world, int abilityOneSelectedIndex, int abilityTwoSelectedIndex) {
+		
 		abilitiesTable = new Table();
 		
 		abilityOne = new Table();
 		abilityTwo = new Table();
 		
 		//will be a simple arrow graphic, this throws an error atm
-		extendAbilityTable = new TextButton("Abilities", new Skin());
+		//extendAbilityTable = new TextButton();
 		
-		
-		abilitiesTable.setBounds(0, Gdx.graphics.getHeight() - abilitiesTable.getHeight(), (Gdx.graphics.getWidth()/4) + extendAbilityTable.getWidth(), Gdx.graphics.getHeight()/5);
+		//abilitiesTable.setBounds(0, Gdx.graphics.getHeight() - abilitiesTable.getHeight(), (Gdx.graphics.getWidth()/4) + extendAbilityTable.getWidth(), Gdx.graphics.getHeight()/5);
 		abilitiesTable.add(abilityOne).top().left();
-		abilitiesTable.add(extendAbilityTable);
+		//abilitiesTable.add(extendAbilityTable);
 		abilitiesTable.row();
 		abilitiesTable.add(abilityTwo);
+		
+		world.addToMasterTable(abilitiesTable);
+	}
+	
+	public void render(float delta) {
+		abilitiesTable.act(delta);
 	}
 	
 	public void showTable() {
@@ -41,10 +46,4 @@ public class AbilitiesTable {
 		abilitiesTable.setX((abilitiesTable.getX()- abilitiesTable.getWidth()) + extendAbilityTable.getWidth());
 		
 	}
-	
-	public void render(Stage stage) {
-		abilitiesTable.debug();
-		Table.drawDebug(stage);
-	}
-
 }

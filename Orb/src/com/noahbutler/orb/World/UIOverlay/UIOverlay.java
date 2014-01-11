@@ -1,27 +1,47 @@
 package com.noahbutler.orb.World.UIOverlay;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.World;
 
 public class UIOverlay {
 	
-	int currentLevel;
 	Table statsDisplayTable;
 	private World world;
 	
+	Label level;
+	Label money;
+	Label score;
+	LabelStyle style;
+	BitmapFont font;
+	
 	public UIOverlay(World world) {
 		this.world = world;
-		currentLevel = OrbGame.saveFile.getLevel(OrbGame.saveFile.xp);
 		
 		statsDisplayTable = new Table();
+		statsDisplayTable.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/5);
+		
+		font  = new BitmapFont();
+		style = new LabelStyle(font, new Color(100, 100, 100, 100));
+		
+		level = new Label("" + OrbGame.saveFile.getLevel(OrbGame.saveFile.xp), style);
+		money = new Label("" + OrbGame.saveFile.money, style);
+		score = new Label("" + OrbGame.saveFile.score, style);
+		
+		this.world.addToMasterTable(statsDisplayTable);
 		
 	}
 	
-	public void render(SpriteBatch b) {
-		
+	public void render(float delta) {
+		//update numbers
+		level.act(delta);
+		money.act(delta);
+		score.act(delta);
 	}
-	
-
 }
