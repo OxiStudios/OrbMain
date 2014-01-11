@@ -74,7 +74,7 @@ public class CategorySelect extends MasterScreen {
 		}
 
 		// make skin
-		for (int i = 0; i < 4 * 2; i++) {
+		for (int i = 0; i < 6 * 2; i++) {
 			skin.add("skin" + i,
 					new Sprite(categoryButtons.createSprite("button" + i)));
 		}
@@ -84,11 +84,11 @@ public class CategorySelect extends MasterScreen {
 		}
 
 		// make image button styles
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
 			imageButtonsStyle.add(new ImageButtonStyle());
 		}
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
 			switch (i) {
 			case 0:
 				imageButtonsStyle.get(i).imageUp = skin.newDrawable("skin" + i);
@@ -123,7 +123,8 @@ public class CategorySelect extends MasterScreen {
 		}
 
 		// add styles and listeners to buttons
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
+			imageButtons.get(i).setSize(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 3);
 			imageButtons.add(new ImageButton(imageButtonsStyle.get(i)));
 			imageButtons.get(i).addListener(
 					new MainMenuButtonListener(i, screens.get(i), game));
