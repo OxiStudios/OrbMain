@@ -125,11 +125,11 @@ public class CategorySelect extends MasterScreen {
 
 		// add styles and listeners to buttons
 		for (int i = 0; i < 6; i++) {
-			imageButtons.get(i).setSize(Gdx.graphics.getWidth() / 2,
-					Gdx.graphics.getHeight() / 3);
 			imageButtons.add(new ImageButton(imageButtonsStyle.get(i)));
-			imageButtons.get(i).addListener(
-					new MainMenuButtonListener(i, screens.get(i), game));
+			//this might need to get changed
+			imageButtons.get(i).addListener(new MainMenuButtonListener(i, screens.get(i), game));
+			//needs to be after you create the image button
+			imageButtons.get(i).setSize(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 3);
 		}
 
 		if (background == null) {
@@ -142,23 +142,17 @@ public class CategorySelect extends MasterScreen {
 		}
 
 		// add buttons to table
-		buttonTable.setSize(Gdx.graphics.getWidth() / 2,
-				Gdx.graphics.getHeight() / 3);
+		buttonTable.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		buttonTable.setPosition(0, 0);
-		buttonTable.add(imageButtons.get(0)).left().padLeft(100);
+		//two per row
+		buttonTable.add(imageButtons.get(0)).left();
+		buttonTable.add(imageButtons.get(1)).right();
 		buttonTable.row();
-		buttonTable.add(imageButtons.get(1)).right().padRight(100);
+		buttonTable.add(imageButtons.get(2)).left();
+		buttonTable.add(imageButtons.get(3)).right();
 		buttonTable.row();
-		buttonTable.add(imageButtons.get(2)).left().padLeft(100);
-		buttonTable.row();
-		buttonTable.add(imageButtons.get(3)).right().padRight(100);
-		buttonTable.row();
-		buttonTable.add(imageButtons.get(4)).right().padRight(100);
-		buttonTable.row();
-		buttonTable.add(imageButtons.get(5)).right().padRight(100);
-		buttonTable.row();
-		buttonTable.add(imageButtons.get(6)).right().padRight(100);
-		buttonTable.row();
+		buttonTable.add(imageButtons.get(4)).left();
+		buttonTable.add(imageButtons.get(5)).right();
 
 	}
 
