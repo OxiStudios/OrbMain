@@ -62,7 +62,8 @@ public class CategorySelect extends MasterScreen {
 
 		if (categoryButtons == null) {
 			categoryButtons = new TextureAtlas(
-					Gdx.files.internal("data/categoryButtons/categoryButtons.pack"));
+					Gdx.files
+							.internal("data/categoryButtons/categoryButtons.pack"));
 		}
 
 		if (b == null) {
