@@ -62,7 +62,8 @@ public class CategorySelect extends MasterScreen {
 
 		if (categoryButtons == null) {
 			categoryButtons = new TextureAtlas(
-					Gdx.files.internal("data/categoryButtons/categoryButtons.pack"));
+					Gdx.files
+							.internal("data/categoryButtons/categoryButtons.pack"));
 		}
 
 		if (b == null) {
@@ -124,7 +125,8 @@ public class CategorySelect extends MasterScreen {
 
 		// add styles and listeners to buttons
 		for (int i = 0; i < 6; i++) {
-			imageButtons.get(i).setSize(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 3);
+			imageButtons.get(i).setSize(Gdx.graphics.getWidth() / 2,
+					Gdx.graphics.getHeight() / 3);
 			imageButtons.add(new ImageButton(imageButtonsStyle.get(i)));
 			imageButtons.get(i).addListener(
 					new MainMenuButtonListener(i, screens.get(i), game));
@@ -140,7 +142,8 @@ public class CategorySelect extends MasterScreen {
 		}
 
 		// add buttons to table
-		buttonTable.setSize(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 3);
+		buttonTable.setSize(Gdx.graphics.getWidth() / 2,
+				Gdx.graphics.getHeight() / 3);
 		buttonTable.setPosition(0, 0);
 		buttonTable.add(imageButtons.get(0)).left().padLeft(100);
 		buttonTable.row();
