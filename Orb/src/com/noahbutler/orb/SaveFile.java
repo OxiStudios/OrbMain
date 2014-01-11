@@ -31,6 +31,19 @@ public class SaveFile {
 	public int score = 0;
 	public int money = 0;
 	public int level = 0;
+	public int xp    = 0;
+	
+	//level xp total
+	public int level_1 = 25;
+	public int level_2 = 75;
+	public int level_3 = 140;
+	public int level_4 = 220;
+	public int level_5 = 350;
+	public int level_6 = 470;
+	public int level_7 = 600;
+	public int level_8 = 810;
+	public int level_9 = 1100;
+	public int level_10= 1400;
 	
 	public boolean kill_CEO;
 	public boolean kill_Killionare;
@@ -65,5 +78,31 @@ public class SaveFile {
 	
 	public void save() {
 		
+	}
+	
+	public int getLevel(int xp) {
+		if(xp < level_1) {
+			return 0;
+		}else if(xp < level_2) {
+			return 1;
+		}else if(xp < level_3) {
+			return 2;
+		}else if(xp < level_4) {
+			return 3;
+		}else if(xp < level_5) {
+			return 4;
+		}else if(xp < level_6) {
+			return 5;
+		}else if(xp < level_7) {
+			return 6;
+		}else if(xp < level_8) {
+			return 7;
+		}else if(xp < level_9) {
+			return 8;
+		}else if(xp < level_10) {
+			return 9;
+		}else {
+			return 10;
+		}
 	}
 }

@@ -1,13 +1,13 @@
 package com.noahbutler.orb.World;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Abilities.AbilitiesTable;
@@ -18,6 +18,7 @@ import com.noahbutler.orb.World.Orbs.OrbRenderer;
 import com.noahbutler.orb.World.Orbs.Orbs;
 import com.noahbutler.orb.World.Ship.Bullet;
 import com.noahbutler.orb.World.Ship.MainShip;
+import com.noahbutler.orb.World.UIOverlay.UIOverlay;
 
 /**
  * 
@@ -53,7 +54,8 @@ public class World {
 	public boolean canfire;
 
 	private Stage stage;
-
+	private Table masterTable;
+	private UIOverlay statsTable;
 	private AbilitiesTable abilitiesTable;
 	
 	/**
@@ -84,7 +86,7 @@ public class World {
 		
 		createBounds();
 		createNewPlayer();
-		stage.addActor(abilitiesTable.abilitiesTable);
+		stage.addActor(masterTable);
 	}
 	
 	
@@ -161,6 +163,10 @@ public class World {
         physics.addBounds(new Vector2(0, 35), 20, 1, new Bounds());
         physics.addBounds(new Vector2(-20 , 0), 1, 35, new Bounds());
         physics.addBounds(new Vector2(20, 0), 1, 35, new Bounds());
+	}
+	
+	public void addToMasterTable(Table table) {
+		masterTable.add(table);
 	}
 
 }
