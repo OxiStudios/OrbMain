@@ -25,7 +25,7 @@ public class AbilitiesTable {
 		//will be a simple arrow graphic, this throws an error atm
 		//extendAbilityTable = new TextButton();
 		
-		//abilitiesTable.setBounds(0, Gdx.graphics.getHeight() - abilitiesTable.getHeight(), (Gdx.graphics.getWidth()/4) + extendAbilityTable.getWidth(), Gdx.graphics.getHeight()/5);
+		abilitiesTable.setBounds(0, Gdx.graphics.getHeight() - abilitiesTable.getHeight(), (Gdx.graphics.getWidth()/4), Gdx.graphics.getHeight()/5);
 		abilitiesTable.add(abilityOne).top().left();
 		//abilitiesTable.add(extendAbilityTable);
 		abilitiesTable.row();

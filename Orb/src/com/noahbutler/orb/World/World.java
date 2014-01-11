@@ -82,7 +82,7 @@ public class World {
 		
 		stage          = new Stage();
 		masterTable    = new Table();
-		masterTable.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		masterTable.setFillParent(true);
 		statsTable     = new UIOverlay(this);
 		abilitiesTable = new AbilitiesTable(this, 1, 1);
 		
@@ -109,8 +109,12 @@ public class World {
 		endlessOrbCreator.create();
 		physics.step(delta);
 		stage.act(delta);
+		
+		mainBatch.begin();
 		stage.draw();
+		masterTable.debug();
 		Table.drawDebug(stage);
+		mainBatch.end();
 		
 		mainBatch.begin();
 		statsTable.render(delta);
