@@ -33,8 +33,11 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-			
-		world.addBulletToPhysicsBullet(world.getShipPosition(), new Bullet(world.getShipPosition()));
+		if(world.isBullet1){
+			world.addBulletToPhysicsBullet(world.getShipPosition(), world.createBulletSelected1(world.getShipPosition()));			
+		}else{
+			world.addBulletToPhysicsBullet(world.getShipPosition(), world.createBulletSelected2(world.getShipPosition()));		
+			}
 		Gdx.app.log("Fired", "Bullet has been fired");	
 		return false;
 	}

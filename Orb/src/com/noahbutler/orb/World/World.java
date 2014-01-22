@@ -61,6 +61,11 @@ public class World {
 	private UIOverlay statsTable;
 	private AbilitiesTable abilitiesTable;
 	
+	public boolean isBullet1;
+	public BulletMaker bulletMaker;
+
+	
+	
 	/**
 	 * 
 	 * @param endless
@@ -68,6 +73,7 @@ public class World {
 	 */
 	public World(boolean endless) {
 		
+		bulletMaker = new BulletMaker();
 		multiplexer = new InputMultiplexer();
 		
 		camera     = new OrthographicCamera();
@@ -85,6 +91,7 @@ public class World {
 		masterTable.setFillParent(true);
 		statsTable     = new UIOverlay(this);
 		abilitiesTable = new AbilitiesTable(this, 1, 1);
+		
 		
 		if(endless) {
 			endlessOrbCreator = new EndlessOrbCreator(this);
@@ -189,5 +196,15 @@ public class World {
 	public void addToMasterTable(Table table) {
 		masterTable.add(table);
 	}
-
+	
+	//creates bullets
+	public Bullet createBulletSelected1(Vector2 position){
+		return bulletMaker.instantiateBullet(OrbGame.saveFile.bulletSelected1, position);
+		
+	}
+	
+	public Bullet createBulletSelected2(Vector2 position){
+		return bulletMaker.instantiateBullet(OrbGame.saveFile.bulletSelected2, position);
+		
+	}
 }

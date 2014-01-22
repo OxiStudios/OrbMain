@@ -64,8 +64,6 @@ public class Bullet extends Entity{
 		this.y = vector.y;
 	}
 	
-	public Bullet instantiateBullet(int index) {
-		return null;
-	}
+
 
 }

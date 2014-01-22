@@ -28,6 +28,9 @@ public class SaveFile {
 	public int gunBarrelSelectedIndex = 0;
 	public int gunBaseSelectedIndex   = 0;
 	
+	public int bulletSelected1 = 0;
+	public int bulletSelected2 = 0;
+	
 	public int abilitySelected1 = 0;
 	public int abilitySelected2 = 0;
 	
@@ -77,6 +80,7 @@ public class SaveFile {
 	//and their level takes off a percent of 
 	//the time.
 	public float fireTime = 500000000;
+	 
 	
 	public SaveFile() {
 		//try loading a saved file
