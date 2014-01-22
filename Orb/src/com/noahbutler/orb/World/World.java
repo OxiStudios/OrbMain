@@ -64,6 +64,8 @@ public class World {
 	public boolean isBullet1;
 	public BulletMaker bulletMaker;
 
+	public boolean isClickedAbility1;
+	public boolean isClickedAbility2;
 	
 	
 	/**
