@@ -28,6 +28,9 @@ public class SaveFile {
 	public int gunBarrelSelectedIndex = 0;
 	public int gunBaseSelectedIndex   = 0;
 	
+	public int abilitySelected1 = 0;
+	public int abilitySelected2 = 0;
+	
 	public int score = 0;
 	public int money = 0;
 	public int level = 0;
@@ -48,14 +51,18 @@ public class SaveFile {
 	public boolean kill_CEO;
 	public boolean kill_Killionare;
 	public boolean kill_OohKillEm;
+	
 	public boolean level_TheNewGuy;
 	public boolean level_SoISeeYouLikeToKillThings;
+	
 	public boolean boss_DefeatBoss1;
 	public boolean boss_DefeatBoss2;
 	public boolean boss_DefeatBoss3;
 	public boolean boss_DefeatBoss4;
+	
 	public boolean play_YouPlayedHowLong;
 	public boolean play_NotRPG;
+	
 	public boolean area_IntoTheVoid;
 	public boolean area_TheyCameFromWithin;
 

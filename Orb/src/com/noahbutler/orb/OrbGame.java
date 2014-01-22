@@ -9,11 +9,11 @@ import com.noahbutler.orb.Screens.MasterScreen;
 import com.noahbutler.orb.Screens.OptionScreen;
 import com.noahbutler.orb.Screens.OrbGameScreen;
 import com.noahbutler.orb.Screens.ShipUpgradeScreen;
-import com.noahbutler.orb.Screens.TutorialScreen;
 import com.noahbutler.orb.Screens.LevelSelection.LevelDesertSelection;
 import com.noahbutler.orb.Screens.LevelSelection.LevelPlanetSelection;
 import com.noahbutler.orb.Screens.LevelSelection.LevelSelectScreen;
 import com.noahbutler.orb.Screens.LevelSelection.LevelSpaceSelection;
+import com.noahbutler.orb.Screens.Tutorial.CategorySelect;
 
 /**
  * 
@@ -32,7 +32,7 @@ import com.noahbutler.orb.Screens.LevelSelection.LevelSpaceSelection;
 public class OrbGame extends Game {
 	
 	private MainMenuScreen mainMenuScreen;
-	private TutorialScreen tutorialScreen;
+	private CategorySelect tutorialScreen;
 	private AchievementScreen achievementScreen;
 	private OrbGameScreen gameScreen;
 	private LevelSelectScreen levelSelectScreen;
@@ -66,7 +66,7 @@ public class OrbGame extends Game {
 		levelSpaceSelectionScreen  = new LevelSpaceSelection();
 		
 		achievementScreen = new AchievementScreen();
-		tutorialScreen    = new TutorialScreen();
+		tutorialScreen    = new CategorySelect(this);
 		optionScreen      = new OptionScreen();
 		
 		shipUpgradeScreen = new ShipUpgradeScreen();

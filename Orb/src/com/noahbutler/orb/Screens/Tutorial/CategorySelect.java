@@ -23,7 +23,6 @@ public class CategorySelect extends MasterScreen {
 	private Array<ImageButton> imageButtons;
 	private Array<ImageButtonStyle> imageButtonsStyle;
 	private Skin skin;
-	private Array<MasterScreen> screens;
 
 	private Texture background;
 
@@ -33,9 +32,8 @@ public class CategorySelect extends MasterScreen {
 
 	String log = "CS";
 
-	public CategorySelect(OrbGame game, Array<MasterScreen> screens) {
+	public CategorySelect(OrbGame game) {
 		this.game = game;
-		this.screens = screens;
 
 		Gdx.app.log("CS", "Started...");
 	}
@@ -127,7 +125,7 @@ public class CategorySelect extends MasterScreen {
 		for (int i = 0; i < 6; i++) {
 			imageButtons.add(new ImageButton(imageButtonsStyle.get(i)));
 			//this might need to get changed
-			imageButtons.get(i).addListener(new MainMenuButtonListener(i, screens.get(i), game));
+			//imageButtons.get(i).addListener(new MainMenuButtonListener(i, screens.get(i), game));
 			//needs to be after you create the image button
 			imageButtons.get(i).setSize(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 3);
 		}

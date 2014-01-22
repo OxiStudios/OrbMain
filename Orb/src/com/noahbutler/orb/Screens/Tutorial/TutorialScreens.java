@@ -1,6 +1,17 @@
-package com.noahbutler.orb.Screens;
+package com.noahbutler.orb.Screens.Tutorial;
 
-public class TutorialScreen extends MasterScreen{
+import com.badlogic.gdx.Screen;
+import com.noahbutler.orb.Screens.MasterScreen;
+
+public class TutorialScreens implements Screen{
+	
+	public void setCurrentImage(int i) {
+		
+	}
+	
+	public int getCurrentImageIndex() {
+		return 0;
+	}
 
 	@Override
 	public void render(float delta) {
