@@ -1,5 +1,6 @@
 package com.noahbutler.orb.World.Abilities;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.noahbutler.orb.World.Entity;
 
@@ -7,6 +8,7 @@ public class Ability extends Entity {
 	
 	public int length;
 	public int coolDownTime;
+	
 	//checks if coolDownTime is done, and if it is, change to normal button and make clickable.
 	public boolean isCooledDown;
 	//checks if it is coolingDown;
@@ -22,13 +24,24 @@ public class Ability extends Entity {
 		this.setPosition(position);
 	}
 	
-	public void render(float delta) {
+	public void render(float delta, SpriteBatch b) {
 		if(isCoolingDown) {
 			isCooledDown = false;
 		}
+		
+		if(!needsLocation) {
+			if(isClicked) {
+				startAbility(b);
+			}
+		}else{
+			if(hasLocation && isClicked){
+				isClicked = false;
+				startAbility(b);
+			}
+		}
 	}
 	
-	public void startAbility(){
+	public void startAbility(SpriteBatch b){
 		
 	}
 }

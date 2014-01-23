@@ -133,6 +133,10 @@ public class World {
 		
 		mainBatch.begin();
 		statsTable.render(delta);
+		
+		abilityOne.render(delta, this.mainBatch);
+		abilityTwo.render(delta, this.mainBatch);
+		
 		ship.render(mainBatch);
 		orbRenderer.render(mainBatch, orbs);
 		words.draw(mainBatch, "Score: " + OrbGame.saveFile.score, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);

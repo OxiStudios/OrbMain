@@ -1,6 +1,10 @@
 package com.noahbutler.orb;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 
 /**
  * 
@@ -20,6 +24,8 @@ import java.util.ArrayList;
  */
 
 public class SaveFile {
+	
+	public FileHandle savedFile;
 
 	public int firstBulletSelectedIndex  = 0;
 	public int secondBulletSelectedIndex = 0;
@@ -87,8 +93,15 @@ public class SaveFile {
 		
 	}
 	
+	//gets called after selecting parts and abilities
 	public void save() {
-		
+		String fileString = "" + abilitySelected1 + abilitySelected2;
+		savedFile.writeString(fileString, false);
+	}
+	
+	public void load() {
+		savedFile = Gdx.files.internal("data/save/save.txt");
+		String fileString = savedFile.readString();
 	}
 	
 	public int getLevel(int xp) {
