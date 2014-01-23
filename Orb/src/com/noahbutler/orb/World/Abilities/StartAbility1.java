@@ -8,5 +8,13 @@ public class StartAbility1 extends Ability{
 		super(position);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void queueAbility() {
+		
+	}
+	
+	public void startAbility() {
+		
+	}
 
 }
