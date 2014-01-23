@@ -5,7 +5,7 @@ import com.noahbutler.orb.World.Ship.Bullet;
 import com.noahbutler.orb.World.Ship.BulletTypes.Light.starterBullet;
 
 public class AbilityMaker {
-	public Ability instantiateBullet(int index, Vector2 position) {
+	public Ability instantiateAbility(int index, Vector2 position) {
 		switch(index){
 		case 0:
 			return new StartAbility1(position);
