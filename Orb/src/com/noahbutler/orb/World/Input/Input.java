@@ -2,6 +2,7 @@ package com.noahbutler.orb.World.Input;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector2;
 import com.noahbutler.orb.World.World;
 import com.noahbutler.orb.World.Ship.Bullet;
 
@@ -33,6 +34,11 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		if(world.abilityOne.isClicked && world.abilityOne.needsLocation) {
+			world.abilityOne.setPosition(new Vector2(screenX, screenY));
+			world.abilityOne.hasLocation = true;
+		}
+		
 		if(world.isBullet1){
 			world.addBulletToPhysicsBullet(world.getShipPosition(), world.createBulletSelected1(world.getShipPosition()));			
 		}else{

@@ -8,6 +8,10 @@ import com.noahbutler.orb.World.World;
 
 public class AbilitiesTable {
 	
+	//ability one cool down time;
+	private int AOCDT;
+	private int ATCDT;
+	
 	public Table abilitiesTable;
 	
 	Table abilityOne;
@@ -15,7 +19,17 @@ public class AbilitiesTable {
 	
 	TextButton extendAbilityTable;
 	
+	private int abilityOneIndex;
+	private int abilityTwoIndex;
+	private World world;
+	
 	public AbilitiesTable(World world, int abilityOneSelectedIndex, int abilityTwoSelectedIndex) {
+		this.world           = world;
+		this.abilityOneIndex = abilityOneSelectedIndex;
+		this.abilityTwoIndex = abilityTwoSelectedIndex;
+		
+		AOCDT = world.abilityOne.coolDownTime;
+		ATCDT = world.abilityTwo.coolDownTime;
 		
 		abilitiesTable = new Table();
 		
@@ -35,6 +49,7 @@ public class AbilitiesTable {
 	}
 	
 	public void render(float delta) {
+		
 		abilitiesTable.act(delta);
 	}
 	

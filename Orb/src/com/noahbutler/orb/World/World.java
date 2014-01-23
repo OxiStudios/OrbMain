@@ -12,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Abilities.AbilitiesTable;
+import com.noahbutler.orb.World.Abilities.Ability;
+import com.noahbutler.orb.World.Abilities.AbilityMaker;
 import com.noahbutler.orb.World.Input.Input;
 import com.noahbutler.orb.World.Orbs.EndlessOrbCreator;
 import com.noahbutler.orb.World.Orbs.OrbCreator;
@@ -63,9 +65,10 @@ public class World {
 	
 	public boolean isBullet1;
 	public BulletMaker bulletMaker;
-
-	public boolean isClickedAbility1;
-	public boolean isClickedAbility2;
+	
+	public AbilityMaker abilityMaker;
+	public Ability abilityOne;
+	public Ability abilityTwo;
 	
 	
 	/**
@@ -74,6 +77,9 @@ public class World {
 	 * 
 	 */
 	public World(boolean endless) {
+		abilityMaker = new AbilityMaker();
+		abilityOne   = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected1, new Vector2(0,0));
+		abilityTwo   = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected2, new Vector2(0,0));
 		
 		bulletMaker = new BulletMaker();
 		multiplexer = new InputMultiplexer();
