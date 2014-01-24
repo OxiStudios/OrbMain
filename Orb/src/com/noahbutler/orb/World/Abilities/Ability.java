@@ -27,6 +27,8 @@ public class Ability extends Entity {
 	public void render(float delta, SpriteBatch b) {
 		if(isCoolingDown) {
 			isCooledDown = false;
+		}else{
+			isCooledDown = true;
 		}
 		
 		if(!needsLocation) {
