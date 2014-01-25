@@ -10,6 +10,7 @@ public class StartAbility1 extends Ability{
 
 	public StartAbility1(Vector2 position) {
 		super(position);
+		this.length        = 3;
 		this.coolDownTime  = 10;
 		this.isCooledDown  = true;
 		this.isCoolingDown = false;
@@ -19,14 +20,7 @@ public class StartAbility1 extends Ability{
 		this.sprite = new Sprite();
 	}
 	
-	public void startAbility(SpriteBatch b) {
-		//do ability shit
+	public void runAbility(SpriteBatch b) {
+		//gets called over and over until the ability is done.
 	}
-	
-	public void render(float delta, SpriteBatch b) {
-		
-	}
-	
-	
-
 }
