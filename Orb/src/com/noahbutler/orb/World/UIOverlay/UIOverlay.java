@@ -34,6 +34,10 @@ public class UIOverlay {
 		money = new Label("" + OrbGame.saveFile.money, style);
 		score = new Label("" + OrbGame.saveFile.score, style);
 		
+		statsDisplayTable.add(level);
+		statsDisplayTable.add(money);
+		statsDisplayTable.add(score);
+		
 		this.world.addToMasterTable(statsDisplayTable);
 		
 	}
@@ -43,5 +47,6 @@ public class UIOverlay {
 		level.act(delta);
 		money.act(delta);
 		score.act(delta);
+		statsDisplayTable.act(delta);
 	}
 }
