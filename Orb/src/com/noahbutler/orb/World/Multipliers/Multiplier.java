@@ -29,12 +29,14 @@ public class Multiplier extends Entity{
 	}
 	
 	public void render(float delta, SpriteBatch b) {
+		
 		if(isActive) {
 			if(startTime - currentTime >= multipleLength) {
-				//add multiplier here
-				Gdx.app.log("multiplier", "there is a multiplier running atm");
+				isActive = false;	
 			}
 			
+			//multiplier stuff runs here
+			Gdx.app.log("multiplier", "there is a multiplier running atm");
 			//reset currentTime
 			currentTime = TimeUtils.nanoTime();
 		}
