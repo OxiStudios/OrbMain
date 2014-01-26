@@ -49,7 +49,6 @@ public class AbilitiesTable {
 	}
 	
 	public void render(float delta) {
-		
 		abilitiesTable.act(delta);
 	}
 	

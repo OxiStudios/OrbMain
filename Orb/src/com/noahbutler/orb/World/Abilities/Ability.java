@@ -1,5 +1,6 @@
 package com.noahbutler.orb.World.Abilities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -9,6 +10,8 @@ public class Ability extends Entity {
 	
 	//one second in nanosecond
 	private static final int NANO = 1000000000;
+	//string for logs
+	private String log = "ability";
 	
 	//how long the ability is active for.
 	public int length;
@@ -46,6 +49,7 @@ public class Ability extends Entity {
 			if(currentTimeCoolDown - startTime >= (coolDownTime * NANO)) {
 				isCoolingDown = false;
 				isCooledDown   = true;
+				Gdx.app.log(log, "ability is cooled down");
 			}
 			
 			currentTimeCoolDown = TimeUtils.nanoTime();
@@ -53,18 +57,22 @@ public class Ability extends Entity {
 		
 		if(!needsLocation) {
 			if(isClicked) {
+				Gdx.app.log(log, "ability doesn't need a location and is clicked");
 				isReady       = true;
 				isCoolingDown = true;
+				
 			}
 		}else{
 			if(hasLocation && isClicked){
+				Gdx.app.log(log, "ability needs a location, has a location, and is clicked");
 				isClicked     = false;
 				isReady       = true;
 				isCoolingDown = true;
 			}
 		}
-		
+		//stopAbility will make this false
 		if(isReady) {
+			Gdx.app.log(log, "ability is starting");
 			startAbility(b);
 		}
 	}
@@ -84,11 +92,12 @@ public class Ability extends Entity {
 	
 	//gets called when the current ability is done
 	public void stopAbility() {
+		Gdx.app.log(log, "ability has been stopped");
 		isReady = false;
 	}
 	
 	//gets called when the ability is in affect over and over again
 	public void runAbility(SpriteBatch b) {
-		
+		Gdx.app.log(log, "ability should be running at this point");
 	}
 }
