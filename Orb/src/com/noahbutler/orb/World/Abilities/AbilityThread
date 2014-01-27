@@ -1,0 +1,15 @@
+
+public class AbilityThread {
+
+/**
+*This is the thread that will run the shit that is in the ability classes render method atm
+*
+**/
+	
+	public Thread mainThread;
+	
+	public AbilityThread() {
+			mainThread = new Thread(new Runnable(
+	}
+
+}
