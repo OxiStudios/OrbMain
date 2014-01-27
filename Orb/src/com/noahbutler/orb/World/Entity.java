@@ -2,6 +2,7 @@ package com.noahbutler.orb.World;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
  * 
@@ -36,7 +37,7 @@ import com.badlogic.gdx.math.Vector2;
  * current entity with the position of is assoc. body
  */
 
-public class Entity {
+public class Entity extends Actor{
 	
 	static final float SCALING_FACTOR = .05f;
 	Vector2 position;

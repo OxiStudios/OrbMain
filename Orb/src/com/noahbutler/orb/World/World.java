@@ -8,11 +8,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Abilities.AbilitiesTable;
 import com.noahbutler.orb.World.Abilities.Ability;
+import com.noahbutler.orb.World.Abilities.AbilityCaller;
 import com.noahbutler.orb.World.Abilities.AbilityMaker;
 import com.noahbutler.orb.World.Input.Input;
 import com.noahbutler.orb.World.Orbs.EndlessOrbCreator;
@@ -66,6 +68,8 @@ public class World {
 	public boolean isBullet1;
 	public BulletMaker bulletMaker;
 	
+	public AbilityCaller abilityCallerOne;
+	public AbilityCaller abilityCallerTwo;
 	public AbilityMaker abilityMaker;
 	public Ability abilityOne;
 	public Ability abilityTwo;
@@ -77,9 +81,12 @@ public class World {
 	 * 
 	 */
 	public World(boolean endless) {
-		abilityMaker = new AbilityMaker();
-		abilityOne   = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected1, new Vector2(0,0));
-		abilityTwo   = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected2, new Vector2(0,0));
+		abilityMaker     = new AbilityMaker(this);
+		abilityCallerOne = new AbilityCaller(this);
+		abilityCallerTwo = new AbilityCaller(this);
+		abilityOne       = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected1);
+		abilityTwo       = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected2);
+		
 		
 		bulletMaker = new BulletMaker();
 		multiplexer = new InputMultiplexer();

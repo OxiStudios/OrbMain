@@ -1,26 +1,22 @@
 package com.noahbutler.orb.World.Abilities;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.noahbutler.orb.World.World;
 
-public class StartAbility1 extends Ability{
+public class StartAbility1 extends Ability implements Runnable{
 	
-	Sprite sprite;
-
-	public StartAbility1(Vector2 position) {
-		super(position);
-		this.length        = 3;
-		this.coolDownTime  = 10;
-		this.isCooledDown  = true;
-		this.isCoolingDown = false;
-		this.needsLocation = false;
-		this.hasLocation   = false;
+	
+	public StartAbility1(World world) {
+		super(world);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
 		
-		this.sprite = new Sprite();
 	}
 	
-	public void runAbility(SpriteBatch b) {
-		//gets called over and over until the ability is done.
-	}
+	
 }

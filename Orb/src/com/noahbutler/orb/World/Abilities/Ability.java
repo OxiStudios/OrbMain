@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.noahbutler.orb.World.Entity;
+import com.noahbutler.orb.World.World;
 
 public class Ability extends Entity {
 	
@@ -36,9 +37,10 @@ public class Ability extends Entity {
 	public float currentTime = 0;
 	//float that will keep track of the current time for cooling down
 	public float currentTimeCoolDown = 0;
+	private World world;
 	
-	public Ability(Vector2 position){
-		this.setPosition(position);
+	public Ability(World world){
+		this.world = world;
 	}
 	
 	public void render(float delta, SpriteBatch b) {
