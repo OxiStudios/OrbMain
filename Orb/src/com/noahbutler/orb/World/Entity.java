@@ -37,7 +37,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  * current entity with the position of is assoc. body
  */
 
-public class Entity extends Actor{
+public class Entity {
 	
 	static final float SCALING_FACTOR = .05f;
 	Vector2 position;

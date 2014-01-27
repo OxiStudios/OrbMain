@@ -1,5 +1,6 @@
 package com.noahbutler.orb.World.Abilities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.noahbutler.orb.World.World;
 import com.noahbutler.orb.World.Ship.Bullet;
@@ -14,13 +15,11 @@ public class AbilityMaker {
 	}
 	
 	public Ability instantiateAbility(int index) {
-		switch(index){
-		case 0:
+		Gdx.app.log("Ability", "Ability has been created");
+		if(index == 0) {
 			return new StartAbility1(world);
-			//break?
-		default:
+		}else{
 			return new StartAbility1(world);
-			//break?
 		}
 	}
 }

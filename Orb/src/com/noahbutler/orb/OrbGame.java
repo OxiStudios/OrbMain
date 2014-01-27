@@ -51,9 +51,12 @@ public class OrbGame extends Game {
 	private MainAssetLoader assetLoader;
 	
 	public static SaveFile saveFile;
+	public static boolean isRunning;
 	
 	@Override
 	public void create() {
+		
+		isRunning = true;
 		saveFile = new SaveFile();
 		
 		screens      = new Array<MasterScreen>();
@@ -94,6 +97,7 @@ public class OrbGame extends Game {
 
 	@Override
 	public void dispose() {
+		isRunning = true;
 	}
 
 	@Override
@@ -108,10 +112,12 @@ public class OrbGame extends Game {
 
 	@Override
 	public void pause() {
+		isRunning = false;
 	}
 
 	@Override
 	public void resume() {
+		isRunning = true;
 	}
 	
 	public MainAssetLoader getAssetLoader() {

@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Entity;
 import com.noahbutler.orb.World.World;
 
 public class Ability extends Entity {
+	
 	
 	//one second in nanosecond
 	private static final int NANO = 1000000000;
@@ -37,50 +39,69 @@ public class Ability extends Entity {
 	public float currentTime = 0;
 	//float that will keep track of the current time for cooling down
 	public float currentTimeCoolDown = 0;
+	//the world class
 	private World world;
+	//the thread that the abilities run on
+	private Thread mainAbilityThread;
 	
 	public Ability(World world){
 		this.world = world;
-	}
-	
-	public void render(float delta, SpriteBatch b) {
-		
-		//checks if the ability is cooling down
-		if(isCoolingDown) {
-			isCooledDown = false;
-			if(currentTimeCoolDown - startTime >= (coolDownTime * NANO)) {
-				isCoolingDown = false;
-				isCooledDown   = true;
-				Gdx.app.log(log, "ability is cooled down");
+		mainAbilityThread = new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while(OrbGame.isRunning) {
+					Gdx.app.log(log, "Run method is getting called and booleans are being checked");
+					//checks if the ability is cooling down
+					if(isCoolingDown) {
+						isCooledDown = false;
+						if(currentTimeCoolDown - startTime >= (coolDownTime * NANO)) {
+							isCoolingDown = false;
+							isCooledDown   = true;
+							Gdx.app.log(log, "ability is cooled down");
+						}
+						
+						currentTimeCoolDown = TimeUtils.nanoTime();
+					}
+					
+					if(!needsLocation) {
+						if(isClicked) {
+							Gdx.app.log(log, "ability doesn't need a location and is clicked");
+							isReady       = true;
+							isCoolingDown = true;
+							
+						}
+					}else{
+						if(hasLocation && isClicked){
+							Gdx.app.log(log, "ability needs a location, has a location, and is clicked");
+							isClicked     = false;
+							isReady       = true;
+							isCoolingDown = true;
+						}
+					}
+					//stopAbility will make this false
+					if(isReady) {
+						Gdx.app.log(log, "ability is starting");
+						//run ability here
+					}
+				}
 			}
 			
-			currentTimeCoolDown = TimeUtils.nanoTime();
-		}
+		});
 		
-		if(!needsLocation) {
-			if(isClicked) {
-				Gdx.app.log(log, "ability doesn't need a location and is clicked");
-				isReady       = true;
-				isCoolingDown = true;
-				
-			}
-		}else{
-			if(hasLocation && isClicked){
-				Gdx.app.log(log, "ability needs a location, has a location, and is clicked");
-				isClicked     = false;
-				isReady       = true;
-				isCoolingDown = true;
-			}
-		}
-		//stopAbility will make this false
-		if(isReady) {
-			Gdx.app.log(log, "ability is starting");
-			startAbility(b);
-		}
+		//Start the thread
+		mainAbilityThread.start();
+	}
+	
+	//for rendering the graphics only
+	public void render(float delta, SpriteBatch b) {
+		
+		
 	}
 	
 	//keeps track of the ability and how long it has been going for
-	public void startAbility(SpriteBatch b){
+	public void startAbility(){
 		this.startTime = TimeUtils.nanoTime();
 		
 		//if this is true the ability has gone on for the length that it should
@@ -88,7 +109,7 @@ public class Ability extends Entity {
 		if(currentTime - startTime >= (length * NANO)) {
 			stopAbility();
 		}
-		runAbility(b);
+		runAbility();
 		currentTime = TimeUtils.nanoTime();
 	}
 	
@@ -99,7 +120,7 @@ public class Ability extends Entity {
 	}
 	
 	//gets called when the ability is in affect over and over again
-	public void runAbility(SpriteBatch b) {
+	public void runAbility() {
 		Gdx.app.log(log, "ability should be running at this point");
 	}
 }

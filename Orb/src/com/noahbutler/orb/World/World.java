@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Abilities.AbilitiesTable;
 import com.noahbutler.orb.World.Abilities.Ability;
-import com.noahbutler.orb.World.Abilities.AbilityCaller;
 import com.noahbutler.orb.World.Abilities.AbilityMaker;
 import com.noahbutler.orb.World.Input.Input;
 import com.noahbutler.orb.World.Orbs.EndlessOrbCreator;
@@ -68,8 +67,6 @@ public class World {
 	public boolean isBullet1;
 	public BulletMaker bulletMaker;
 	
-	public AbilityCaller abilityCallerOne;
-	public AbilityCaller abilityCallerTwo;
 	public AbilityMaker abilityMaker;
 	public Ability abilityOne;
 	public Ability abilityTwo;
@@ -82,8 +79,6 @@ public class World {
 	 */
 	public World(boolean endless) {
 		abilityMaker     = new AbilityMaker(this);
-		abilityCallerOne = new AbilityCaller(this);
-		abilityCallerTwo = new AbilityCaller(this);
 		abilityOne       = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected1);
 		abilityTwo       = abilityMaker.instantiateAbility(OrbGame.saveFile.abilitySelected2);
 		
