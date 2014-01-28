@@ -83,7 +83,14 @@ public class Ability extends Entity {
 					//stopAbility will make this false
 					if(isReady) {
 						Gdx.app.log(log, "ability is starting");
-						//run ability here
+						startAbility();
+					}
+					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 			}

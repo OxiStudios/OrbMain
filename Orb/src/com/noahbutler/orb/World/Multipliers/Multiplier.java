@@ -3,6 +3,7 @@ package com.noahbutler.orb.World.Multipliers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Entity;
 
 public class Multiplier extends Entity{
@@ -23,22 +24,40 @@ public class Multiplier extends Entity{
 	private float startTime;
 	//current system time
 	private float currentTime;
+	//multiplier timer thread
+	private Thread timerThread;
 	
 	public Multiplier() {
+		timerThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while(OrbGame.isRunning) {
+					if(isActive) {
+						if(startTime - currentTime >= multipleLength) {
+							isActive = false;	
+						}
+						
+						//multiplier stuff runs here
+						Gdx.app.log("multiplier", "there is a multiplier running atm");
+						//reset currentTime
+						currentTime = TimeUtils.nanoTime();
+					}
+					try {
+						timerThread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		});
 		
 	}
 	
 	public void render(float delta, SpriteBatch b) {
-		
-		if(isActive) {
-			if(startTime - currentTime >= multipleLength) {
-				isActive = false;	
-			}
-			
-			//multiplier stuff runs here
-			Gdx.app.log("multiplier", "there is a multiplier running atm");
-			//reset currentTime
-			currentTime = TimeUtils.nanoTime();
-		}
+		//render the multiplier object here
 	}
 }
