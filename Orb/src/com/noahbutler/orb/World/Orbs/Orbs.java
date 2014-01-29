@@ -54,7 +54,6 @@ public class Orbs extends Entity{
 			
 			if(health <= 0) {
 				//switch to dying sprite
-				world.deleteOrbObj(this);
 				OrbGame.saveFile.score += 1;
 				Gdx.app.log("Score", "Score: " + OrbGame.saveFile.score);
 			}

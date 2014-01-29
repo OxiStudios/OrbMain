@@ -17,9 +17,9 @@ public class AbilityMaker {
 	public Ability instantiateAbility(int index) {
 		Gdx.app.log("Ability", "Ability has been created");
 		if(index == 0) {
-			return new StartAbility1(world);
+			return new ShipShieldAbility(world);
 		}else{
-			return new StartAbility1(world);
+			return new ShipShieldAbility(world);
 		}
 	}
 }

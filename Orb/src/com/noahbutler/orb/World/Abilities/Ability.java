@@ -87,7 +87,7 @@ public class Ability extends Entity {
 					}
 					
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

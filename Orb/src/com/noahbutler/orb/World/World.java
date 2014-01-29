@@ -188,11 +188,11 @@ public class World {
 		orbs.add(orb);
 	}
 	
-	public void deleteOrbObj(Orbs orb) {
-		orbs.removeValue(orb, true);
-		orb.sprite = null;
-		orb = null;
-	}
+//	public void deleteOrbObj(Orbs orb) {
+//		orbs.removeValue(orb, true);
+//		orb.sprite = null;
+//		orb = null;
+//	}
 	
 	private void createNewPlayer() {
 		ship = new MainShip(this);

@@ -19,6 +19,8 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.noahbutler.orb.World.Abilities.Ability;
+import com.noahbutler.orb.World.Abilities.AbilityPhysicsCreator;
 import com.noahbutler.orb.World.Orbs.Orbs;
 import com.noahbutler.orb.World.Ship.Bullet;
 import com.noahbutler.orb.World.Ship.MainShip;
@@ -68,7 +70,8 @@ public class Physics {
 	
 	public Array<Body> bulletBodies;
 	public Array<Body> orbBodies;
-	public Array<Body> bounds;
+	public Array<Body> boundsBodies;
+	public Array<Body> abilityBodies;
 	
 	private Array<Body> deletableBodies;
 	private com.noahbutler.orb.World.World gameWorld;
@@ -76,6 +79,8 @@ public class Physics {
 	private Body shipBody;
 	
 	Iterator<Body> bi;
+	
+	private AbilityPhysicsCreator abilityPhysicsCreator;
 	
 	public Physics(OrthographicCamera camera, com.noahbutler.orb.World.World gameWorld) {
 		this.gameWorld = gameWorld;
@@ -90,9 +95,12 @@ public class Physics {
         
         bulletBodies   = new Array<Body>();
         orbBodies      = new Array<Body>();
-        bounds         = new Array<Body>();
+        boundsBodies   = new Array<Body>();
+        abilityBodies  = new Array<Body>();
         
         deletableBodies = new Array<Body>();
+        
+		abilityPhysicsCreator = new AbilityPhysicsCreator(abilityBodies, this.world);
         
         createCollisionListener();
     }
@@ -212,6 +220,35 @@ public class Physics {
 				
 	}
 	
+	
+	/**
+	 * 
+	 * @param index
+	 * @param position
+	 * @param ability
+	 * 
+	 * This is used when creating the ability's physics 
+	 * instead of having thousands of lines of code 
+	 * in this class we just split it up and put the
+	 * methods for making the different abilities into 
+	 * a seperate class
+	 */
+	public void addAbility(int index, Vector2 position, Ability ability) {
+		switch(index) {
+		case 0:
+			abilityPhysicsCreator.shipShieldAbility(position, ability);
+			break;
+		case 1:
+			abilityPhysicsCreator.aoeFireShipAbility(position, ability);
+			break;
+		case 2:
+			abilityPhysicsCreator.aoeShardsShipAbility(position, ability);
+		default:
+			break;
+			
+		}
+	}
+	
 	public void addBounds(Vector2 position, float xSize, float ySize, Bounds newBounds) {
 		PolygonShape groundShape = new PolygonShape();
         groundShape.setAsBox(xSize, ySize);
@@ -222,7 +259,7 @@ public class Physics {
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = groundShape;
         groundBody.createFixture(fixtureDef);
-        bounds.add(groundBody);
+        boundsBodies.add(groundBody);
         
         groundBody.setUserData(newBounds);
         
@@ -280,32 +317,48 @@ public class Physics {
 	}
 	
 	private void removeDeadBodies() {
+		
 		for(int i = 0; i < deletableBodies.size; i++) {
+			
+			//create a pointer to the current body in the for loop
 			Body body = deletableBodies.get(i);
+			
+			
+			//checks if were in the right time of the physics loop
 			if(!world.isLocked() && body != null) {
-				removeBodySafely(body);
+				//removes the body from the array
 				deletableBodies.removeIndex(i);
+				//safely removes body from physics world
+				removeBodySafely(body);
 			}
 		}
 	}
 	
 	private void removeBodySafely(Body body) {
+		
+		//gets the body's joints
 		final ArrayList<JointEdge> list = body.getJointList();
+		
+		//goes through each one and destroys it 
 		while(list.size() > 0) {
 			world.destroyJoint(list.get(0).joint);
 		}
 		
+		//destroy child object
+		body.setUserData(null);
+		//after that it destroys the body
 		world.destroyBody(body);
+		
 	}
 	
 	private void updateObjects() {
 		//bodies are the parents
-		//update the objects with the bodies vector2
+		//update the objects with the body's vector2
 		bi = world.getBodies();
 		while (bi.hasNext()){
 		    Body b = bi.next();
 
-		    // Get the bodies user data
+		    // Get the bodies user data, every object with a parent body extends entity
 		    Entity e = (Entity) b.getUserData();
 
 		    if (e != null) {
