@@ -22,8 +22,8 @@ import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.World.Abilities.Ability;
 import com.noahbutler.orb.World.Abilities.AbilityPhysicsCreator;
 import com.noahbutler.orb.World.Orbs.Orbs;
-import com.noahbutler.orb.World.Ship.Bullet;
 import com.noahbutler.orb.World.Ship.MainShip;
+import com.noahbutler.orb.World.Ship.Bullets.Bullet;
 
 /**
  * 

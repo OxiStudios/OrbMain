@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.World;
+import com.noahbutler.orb.World.Ship.Bullets.Bullet;
 
 public class Gun {
 	int bulletIndex;

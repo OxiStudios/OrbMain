@@ -20,8 +20,8 @@ import com.noahbutler.orb.World.Orbs.EndlessOrbCreator;
 import com.noahbutler.orb.World.Orbs.OrbCreator;
 import com.noahbutler.orb.World.Orbs.OrbRenderer;
 import com.noahbutler.orb.World.Orbs.Orbs;
-import com.noahbutler.orb.World.Ship.Bullet;
 import com.noahbutler.orb.World.Ship.MainShip;
+import com.noahbutler.orb.World.Ship.Bullets.Bullet;
 import com.noahbutler.orb.World.UIOverlay.UIOverlay;
 
 /**

@@ -1,7 +1,7 @@
 package com.noahbutler.orb.World.Ship.BulletTypes.Light;
 
 import com.badlogic.gdx.math.Vector2;
-import com.noahbutler.orb.World.Ship.Bullet;
+import com.noahbutler.orb.World.Ship.Bullets.Bullet;
 
 public class starterBullet extends Bullet{
 

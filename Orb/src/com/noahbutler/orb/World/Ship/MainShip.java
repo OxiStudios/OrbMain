@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Array;
 import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Entity;
 import com.noahbutler.orb.World.World;
+import com.noahbutler.orb.World.Ship.Bullets.Bullet;
 
 /**
  * 

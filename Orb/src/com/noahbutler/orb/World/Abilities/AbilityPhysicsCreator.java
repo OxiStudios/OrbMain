@@ -37,9 +37,8 @@ public class AbilityPhysicsCreator {
 		
 	}
 	
+	//makes a 3-burst of shards fire from the ship
 	public void aoeShardsShipAbility(Vector2 position, Ability ability) {
 		
 	}
-	
-
 }

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.noahbutler.orb.World.World;
-import com.noahbutler.orb.World.Ship.Bullet;
+import com.noahbutler.orb.World.Ship.Bullets.Bullet;
 
 public class Input implements InputProcessor{
 	
