@@ -8,7 +8,7 @@ import com.noahbutler.orb.OrbGame;
 import com.noahbutler.orb.World.Entity;
 import com.noahbutler.orb.World.World;
 
-public class Boss1 extends Entity {
+public class Boss extends Entity {
 	private int type;
 	private boolean canBeDeleted;
 	private int health;
@@ -20,7 +20,16 @@ public class Boss1 extends Entity {
 	private World world;
 	public Sprite sprite;
 
-	public Boss1(int type, World world) {
+	public class Boss1 extends Boss {
+
+		public Boss1(int type, World world) {
+			super(type, world);
+			// TODO Auto-generated constructor stub
+		}
+
+	}
+
+	public Boss(int type, World world) {
 		this.type = type;
 		this.world = world;
 		this.health = 100;
