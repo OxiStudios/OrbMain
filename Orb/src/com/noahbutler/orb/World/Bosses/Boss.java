@@ -22,78 +22,76 @@ public class Boss extends Entity {
 
 	public class Boss1 extends Boss {
 
+		private int type;
+		private World world;
+		private int health;
+
 		public Boss1(int type, World world) {
-			super(type, world);
-			// TODO Auto-generated constructor stub
+			this.type = type;
+			this.world = world;
+			this.health = 100;
+			texture = new Texture(Gdx.files.internal(""));
+			sprite = new Sprite(texture);
 		}
 
-	}
+		public void render(SpriteBatch b) {
+			sprite.setPosition(getPosition().x - sprite.getWidth() / 2,
+					getPosition().y - sprite.getHeight() / 2);
+			sprite.draw(b);
+		}
 
-	public Boss(int type, World world) {
-		this.type = type;
-		this.world = world;
-		this.health = 100;
-		texture = new Texture(Gdx.files.internal(""));
-		sprite = new Sprite(texture);
-	}
+		public int getType() {
+			return this.type;
+		}
 
-	public void render(SpriteBatch b) {
-		sprite.setPosition(getPosition().x - sprite.getWidth() / 2,
-				getPosition().y - sprite.getHeight() / 2);
-		sprite.draw(b);
-	}
+		public void bulletToBoss(String isBullet) {
+			try {
+				int BulletNum = Integer.parseInt(isBullet);
+				if (BulletNum >= 1) {
+					health -= 90;
+				}
+				if (BulletNum >= 2) {
+					health -= 80;
+				}
+				if (BulletNum >= 3) {
+					health -= 70;
+				}
+				if (BulletNum >= 4) {
+					health -= 60;
+				}
+				if (BulletNum >= 5) {
+					health -= 50;
+				}
+				if (BulletNum >= 6) {
+					health -= 40;
+				}
+				if (BulletNum >= 7) {
+					health -= 30;
+				}
+				if (BulletNum >= 8) {
+					health -= 20;
+				}
+				if (BulletNum >= 9) {
+					health -= 10;
+				} else {
+					health -= 100;
+				}
+				if (health <= 0) {
+					OrbGame.saveFile.score += 1;
+					Gdx.app.log("Score", "Score: " + OrbGame.saveFile.score);
+				}
+				Gdx.app.log("Boss Killed", "You have defeated the boss");
+			} catch (NumberFormatException nfe) {
+				// not a bullet, ground, or ship
+			}
 
-	public int getType() {
-		return this.type;
-	}
+		}
 
-	public void bulletToBoss(String isBullet) {
-		try {
-			int BulletNum = Integer.parseInt(isBullet);
-			if (BulletNum >= 1) {
-				health -= 90;
-			}
-			if (BulletNum >= 2) {
-				health -= 80;
-			}
-			if (BulletNum >= 3) {
-				health -= 70;
-			}
-			if (BulletNum >= 4) {
-				health -= 60;
-			}
-			if (BulletNum >= 5) {
-				health -= 50;
-			}
-			if (BulletNum >= 6) {
-				health -= 40;
-			}
-			if (BulletNum >= 7) {
-				health -= 30;
-			}
-			if (BulletNum >= 8) {
-				health -= 20;
-			}
-			if (BulletNum >= 9) {
-				health -= 10;
-			} else {
-				health -= 100;
-			}
+		public String getCheckDeletable() {
 			if (health <= 0) {
-				OrbGame.saveFile.score += 1;
-				Gdx.app.log("Score", "Score: " + OrbGame.saveFile.score);
+				return "yes";
 			}
-			Gdx.app.log("Boss Killed", "You have defeated the boss");
-		} catch (NumberFormatException nfe) {
-			// not a bullet, ground, or ship
+			return "no";
 		}
-
-	}
-
-	public String getCheckDeletable() {
-		if (health <= 0) {
-			return "yes";
-		}
-		return "no";
 	}
 }
