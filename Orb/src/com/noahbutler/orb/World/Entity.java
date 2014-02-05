@@ -49,15 +49,23 @@ public class Entity {
 		position = new Vector2();
 	}
 	
+	//override in orb
 	public void startContact(String isBullet) {
 		
 	}
 	
+	//override in orb and bullet class
 	public String getCheckDeletable() {
 		//"not bullet or orb so don't delete"
 		return "no";
 	}
 	
+	//override in bullet class
+	public String getDamageString() {
+		return "";
+	}
+	
+	//override in bullet class
 	public String getIsBullet() {
 		return "notBullet";
 	}

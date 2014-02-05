@@ -42,15 +42,12 @@ public class Orbs extends Entity{
 		return this.type;
 	}
 	
-	public void startContact(String isBullet) {
+	public void startContact(String getDamageString) {
 		try{
-			int BulletNum = Integer.parseInt(isBullet);
+			int BulletNum = Integer.parseInt(getDamageString);
 			//is a bullet
-			if(BulletNum >= 1) {
-				health -= 50;
-			}else{
-				health -= 100;
-			}
+			
+			health -= BulletNum;
 			
 			if(health <= 0) {
 				//switch to dying sprite

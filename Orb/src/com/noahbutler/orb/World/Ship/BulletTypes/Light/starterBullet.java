@@ -8,6 +8,7 @@ public class starterBullet extends Bullet{
 	public starterBullet(Vector2 vector) {
 		super(vector);
 		// TODO Auto-generated constructor stub
+		this.damage = 34;
 	}
 	
 }

@@ -294,18 +294,23 @@ public class Physics {
 				Entity eB = (Entity) bodyB.getUserData();
 				
 				//bodyA might be an orb and bodyB might be a bullet
-				eA.startContact(eB.getIsBullet());
-				
+				if(eB.getIsBullet() == "yes") {
+					//eB is a bullet and needs to shit on eA with its damage
+					eA.startContact(eB.getDamageString());
+				}
 				//bodyB might be an orb and bodyA might be a bullet
-				eB.startContact(eA.getIsBullet());
+				if(eA.getIsBullet() == "yes") {
+					//eA is a bullet and needs to shit on eB with its damage
+					eB.startContact(eA.getDamageString());
+				}
 				
-				//might bodyA is a bullet or an orb
+				//check if it can be deleted
 				if(eA.getCheckDeletable() == "yes") {
 					//bodyA is a bullet or an orb
 					deletableBodies.add(bodyA);
 				}
 				
-				//might bodyB is a bullet or an orb
+				//check if it can be deleted
 				if(eB.getCheckDeletable() == "yes") {
 					//bodyB is a bullet or an orb
 					deletableBodies.add(bodyB);
