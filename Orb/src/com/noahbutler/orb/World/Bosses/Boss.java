@@ -94,4 +94,7 @@ public class Boss extends Entity {
 			return "no";
 		}
 	}
+	public class Boss2 extends Boss {
+		
+	}
 }
